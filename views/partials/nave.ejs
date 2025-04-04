@@ -1,0 +1,63 @@
+<nav class="bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <h1 class="text-2xl font-extrabold tracking-wide">📚 Previous Year Papers</h1>
+
+        <!-- Navigation Links -->
+
+        <ul class="hidden md:flex space-x-6 text-lg">
+            <li><a href="/" class="hover:text-yellow-300 transition duration-300">Home</a></li>
+            <li><a href="#" class="hover:text-yellow-300 transition duration-300">About</a></li>
+            <li><a href="#" class="hover:text-yellow-300 transition duration-300">Contact</a></li>
+        </ul>
+        <% if (islogedin) { %>
+            <!-- login or register button -->
+            <ul class="md:flex space-x-6">
+                <form action="/logout" method="post">
+                    <button
+                        class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                        logout</button>
+                    </a>
+                </form>
+
+                </li>
+                <a href="/upload"
+                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                📤 Upload
+            </a>
+            </ul>
+            <%}else {%>
+                <!-- Upload Button -->
+                 <ul class="space-x-6">
+                <!-- <a href="/register"
+                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                Register
+            </a> -->
+                <a href="/login"
+                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                login
+            </a>
+            </ul>
+                <%}%>
+
+
+
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-2xl focus:outline-none" id="menu-btn">☰</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-blue-600 p-4 space-y-2 text-center" id="mobile-menu">
+        <a href="/" class="block hover:text-yellow-300">Home</a>
+        <a href="#" class="block hover:text-yellow-300">About</a>
+        <a href="#" class="block hover:text-yellow-300">Contact</a>
+    </div>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</nav>

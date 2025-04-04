@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Question Paper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <%-include('partials/nave')%>
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Upload Question Paper</h1>
+        <div class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label class="block mb-2 font-semibold">Select Semester:</label>
+                <select name="semester" class="w-full p-2 border rounded mb-4">
+                    <option value="semester1">Semester 1</option>
+                    <option value="semester2">Semester 2</option>
+                    <option value="semester3">Semester 3</option>
+                    <option value="semester4">Semester 4</option>
+                    <option value="semester5">Semester 5</option>
+                    <option value="semester6">Semester 6</option>
+                    <option value="semester7">Semester 7</option>
+                    <option value="semester8">Semester 8</option>
+                </select>
+                
+                <label class="block mb-2 font-semibold">Select Subject:</label>
+                <input type="text" name="subject" class="w-full p-2 border rounded mb-4" placeholder="Enter subject name" required>
+                
+                <label class="block mb-2 font-semibold">Select Year:</label>
+                <input type="text" name="year" class="w-full p-2 border rounded mb-4" placeholder="Enter year" required>
+                
+                <label class="block mb-2 font-semibold">Upload File:</label>
+                <input type="file" name="photo" accept="image/*" class="w-full p-2 border rounded mb-4" required>
+                
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Upload</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
