@@ -1,4 +1,6 @@
 const Home=require('../models/qp');
+const rootDir=require('../utils/pathutils');
+const path=require('path');
 exports.getHome=async(req,res,next)=>{
     const pd=await Home.find();
     const sem=pd.map((data)=>data.semester);
@@ -20,7 +22,9 @@ exports.getViewPaper=(req,res,next)=>{
 }
 exports.getdownload=(req,res,next)=>{
     Home.findById(req.params.id).then((oneqp)=>{
+        
         const imgpath=oneqp.photo;
-        res.download(imgpath);
+        const imagpaths=path.join(rootDir,imgpath);
+        res.download(imagpaths);
     });
 }
