@@ -24,7 +24,9 @@ exports.getdownload=(req,res,next)=>{
     Home.findById(req.params.id).then((oneqp)=>{
         
         const imgpath=path.basename(oneqp.photo);
+        console.log(imgpath);
         const imagpaths=path.join(rootDir,'uploads',imgpath);
+        console.log(imagpaths);
         res.download(imagpaths);
     });
 }
