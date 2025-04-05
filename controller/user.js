@@ -23,8 +23,8 @@ exports.getViewPaper=(req,res,next)=>{
 exports.getdownload=(req,res,next)=>{
     Home.findById(req.params.id).then((oneqp)=>{
         
-        const imgpath=oneqp.photo;
-        const imagpaths=path.join(rootDir,imgpath);
+        const imgpath=oneqp.originalname;
+        const imagpaths=path.join(rootDir,'uploads',imgpath);
         res.download(imagpaths);
     });
 }
