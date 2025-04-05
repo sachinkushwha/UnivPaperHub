@@ -23,9 +23,10 @@ exports.getViewPaper=(req,res,next)=>{
 exports.getdownload=(req,res,next)=>{
     Home.findById(req.params.id).then((oneqp)=>{
         
-        const imgpath=path.basename(oneqp.photo);
+        
+        const imgpath=oneqp.photo.replace(/\\/g, '/');
         console.log(imgpath);
-        const imagpaths=path.join(rootDir,'uploads',imgpath);
+        const imagpaths=path.join(rootDir,'..',imgpath);
         console.log(imagpaths);
         res.download(imagpaths);
     });
