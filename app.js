@@ -34,6 +34,7 @@ const multerOptions={
 app.use(multer(multerOptions).single('photo'));
 app.use(express.urlencoded());
 app.use('/viewpaper/uploads',express.static(path.join(rootDir,'uploads')));
+app.use('/download/uploads',express.static(path.join(rootDir,'uploads')));
 app.set('view engine','ejs');
 app.set('views','views');
 
