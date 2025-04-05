@@ -26,7 +26,7 @@ exports.getdownload=(req,res,next)=>{
         
         const imgpath=oneqp.photo.replace(/\\/g, '/');
         console.log(imgpath);
-        const imagpaths=path.join(rootDir,'..',imgpath);
+        const imagpaths=path.join(rootDir,imgpath);
         console.log(imagpaths);
         res.download(imagpaths);
     });
