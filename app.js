@@ -9,6 +9,7 @@ const hostRouter=require('./router/hostRouter');
 const multer=require('multer');
 const path=require('path');
 const rootDir=require('./utils/pathutils');
+const {storages}=require('./cloudinaryConfig');
 const mongoUri= "mongodb+srv://sachin:kumar@airbnb.48epv.mongodb.net/agc?retryWrites=true&w=majority&appName=airbnb";
 
 // for seo
@@ -46,38 +47,18 @@ app.get('/sitemap.xml', (req, res) => {
     </url>
   </urlset>`);
   });
-//for seo
+
 app.get('/robots.txt', (req, res) => {
     res.type('text/plain');
     res.send(`User-agent: *
   Allow: /
   Sitemap: https://agcpyqp-1.onrender.com/sitemap.xml`);
   });
-//  
+//for seo
 
-const mulstorage=multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,'uploads/');
-    },
-    filename:(req,file,cb)=>{
-        cb(null,Date.now()+"_"+file.originalname);
-    }
-});
-const filefilter=(req,file,cb)=>{
-    if(file.mimetype==='image/jpeg' || file.mimetype==='image/png'){
-        cb(null,true);
-    }else{
-        cb(null,false);
-    }
-}
-
-const multerOptions={
-    storage:mulstorage,filefilter
-}
-app.use(multer(multerOptions).single('photo'));
+app.use(multer({storage:storages}).array('photo',5));
 app.use(express.urlencoded());
 app.use('/viewpaper/uploads',express.static(path.join(rootDir,'uploads')));
-// app.use(express.static(path.join(rootDir,'public')));
 app.set('view engine','ejs');
 app.set('views','views');
 

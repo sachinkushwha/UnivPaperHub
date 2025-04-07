@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="<%=oneqp.photo%>" alt="">
+  <%oneqp.forEach(ph=>{%>
+    <img src="<%=ph.photo%>" alt="">
+  <%})%>
+    
 </body>
 </html>

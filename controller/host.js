@@ -6,10 +6,14 @@ exports.getUpload=(req,res,next)=>{
 exports.postUpload=(req,res,next)=>{
     const {semester,subject,year}=req.body;
     console.log(semester,subject,year);
-    console.log(req.file);
-    const photo=req.file.path;
-    const originalname=req.file.originalname;
-    const home=new Home({semester,subject,year,photo,originalname});
+    console.log(req.files);
+    const photos=req.files.map(file=>({
+        photo:file.path,
+        originalname:file.originalname
+    }));
+    // const photo=req.files.path;
+    // const originalname=req.files.originalname;
+    const home=new Home({semester,subject,year,photos});
     home.save().then(()=>{
         res.redirect('/');
     });
