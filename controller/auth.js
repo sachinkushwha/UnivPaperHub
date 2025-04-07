@@ -19,6 +19,7 @@ exports.postLogin=async(req,res,next)=>{
         return res.redirect('/login');
     }
     req.session.isLogedin=true;
+    req.session.user=user;
     res.redirect('/');
 }
 exports.postLogout=(req,res,next)=>{

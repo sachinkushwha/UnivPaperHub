@@ -7,7 +7,14 @@ const paper=mongoose.Schema({
     photos:[{
         photo:String,
         originalname:String
-    }]
+    }],
+    papertype:{type:String,required:true},
+    user:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'user',
+        },
+    ]
 });
 
 module.exports=mongoose.model('Home',paper);
