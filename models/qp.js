@@ -6,7 +6,8 @@ const paper=mongoose.Schema({
     year:{type:Number,required:true},
     photos:[{
         photo:String,
-        originalname:String
+        originalname:String,
+        public_id:String
     }],
     papertype:{type:String,required:true},
     user:[

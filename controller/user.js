@@ -5,10 +5,8 @@ const axios = require('axios');
 const PDFdocument = require('pdfkit');
 exports.getHome = async (req, res, next) => {
     const pd = await Home.find();
-    console.log(pd);
     const sem = pd.map((data) => data.semester);
     const semester = [...new Set(sem)];
-    console.log(semester);
     Home.find().then(qpdata => {
         res.render('index', { islogedin: req.session.isLogedin, qpdata, semester });
     })
@@ -21,7 +19,6 @@ exports.getDetails = (req, res, next) => {
 exports.getViewPaper = (req, res, next) => {
     Home.findById(req.params.id).then((oneqp) => {
         oneqp = oneqp.photos;
-        console.log(oneqp);
         res.render('viewpaper', { oneqp });
     });
 }

@@ -4,47 +4,44 @@
         <h1 class="text-2xl font-extrabold tracking-wide">📚 Previous Year Papers</h1>
 
         <!-- Navigation Links -->
-
         <ul class="hidden md:flex space-x-6 text-lg">
             <li><a href="/" class="hover:text-yellow-300 transition duration-300">Home</a></li>
             <li><a href="#" class="hover:text-yellow-300 transition duration-300">About</a></li>
             <li><a href="#" class="hover:text-yellow-300 transition duration-300">Contact</a></li>
         </ul>
+
         <% if (islogedin) { %>
-            <!-- login or register button -->
-            <ul class="md:flex space-x-6">
+            <!-- Logged-in Buttons -->
+            
+            <div class="hidden md:flex items-center space-x-4">
+                <ul class="hidden md:flex space-x-6 text-lg">
+                    <a href="/home" class="hover:text-yellow-300 transition duration-300 text-lg">Host-Room</a>
+                    </ul>
                 <form action="/logout" method="post">
                     <button
                         class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
-                        logout</button>
-                    </a>
+                        Logout
+                    </button>
                 </form>
 
-                </li>
                 <a href="/upload"
-                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
-                📤 Upload
-            </a>
-            </ul>
-            <%}else {%>
-                <!-- Upload Button -->
-                 <ul class="space-x-6">
-                <!-- <a href="/register"
-                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
-                Register
-            </a> -->
+                    class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                    📤 Upload
+                </a>
+            </div>
+        <% } else { %>
+            <!-- Not Logged-in Buttons -->
+           
+            <div class="hidden md:flex items-center space-x-4">
                 <a href="/login"
-                class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
-                login
-            </a>
-            </ul>
-                <%}%>
+                    class="bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                    Login
+                </a>
+            </div>
+        <% } %>
 
-
-
-
-                    <!-- Mobile Menu Button -->
-                    <button class="md:hidden text-2xl focus:outline-none" id="menu-btn">☰</button>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-2xl focus:outline-none" id="menu-btn">☰</button>
     </div>
 
     <!-- Mobile Menu -->
@@ -52,6 +49,27 @@
         <a href="/" class="block hover:text-yellow-300">Home</a>
         <a href="#" class="block hover:text-yellow-300">About</a>
         <a href="#" class="block hover:text-yellow-300">Contact</a>
+
+        <% if (islogedin) { %>
+            <a href="/home" class="block hover:text-yellow-300">Host-Room</a>
+
+            <form action="/logout" method="post">
+                <button
+                    class="w-full mt-2 bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                    Logout
+                </button>
+            </form>
+
+            <a href="/upload"
+                class="block mt-2 bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                📤 Upload
+            </a>
+        <% } else { %>
+            <a href="/login"
+                class="block mt-2 bg-yellow-400 text-gray-900 px-5 py-2 rounded-lg font-semibold shadow-md hover:bg-yellow-500 transition duration-300">
+                Login
+            </a>
+        <% } %>
     </div>
 
     <!-- JavaScript for Mobile Menu Toggle -->
