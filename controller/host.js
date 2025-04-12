@@ -21,7 +21,7 @@ exports.postUpload = (req, res, next) => {
     }));
     const home = new Home({ semester, subject, year, photos, papertype, user });
     home.save().then(() => {
-        res.redirect('/');
+        res.redirect('/home');
     });
 }
 exports.postDelete = async (req, res, next) => {
