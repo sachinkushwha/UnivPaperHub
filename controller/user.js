@@ -14,9 +14,7 @@ exports.getHome = async (req, res, next) => {
 
 }
 
-exports.getDetails = (req, res, next) => {
-    res.render('viewitem', { islogedin: req.session.isLogedin });
-}
+
 exports.getViewPaper = (req, res, next) => {
     Home.findById(req.params.id).then((oneqp) => {
         oneqp = oneqp.photos;

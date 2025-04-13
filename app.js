@@ -22,7 +22,7 @@ app.get('/sitemap.xml', (req, res) => {
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/details</loc>
+      <loc>https://agcpyqp-1.onrender.com/about</loc>
       <priority>0.8</priority>
     </url>
     <url>
@@ -34,16 +34,8 @@ app.get('/sitemap.xml', (req, res) => {
       <priority>0.6</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/upload</loc>
+      <loc>https://agcpyqp-1.onrender.com/contact</loc>
       <priority>0.5</priority>
-    </url>
-    <url>
-      <loc>https://agcpyqp-1.onrender.com/viewpaper/1</loc>
-      <priority>0.7</priority>
-    </url>
-    <url>
-      <loc>https://agcpyqp-1.onrender.com/download/1</loc>
-      <priority>0.7</priority>
     </url>
   </urlset>`);
   });
