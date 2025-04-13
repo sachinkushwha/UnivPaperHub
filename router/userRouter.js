@@ -5,5 +5,8 @@ userRouter.get('/',userController.getHome);
 userRouter.get('/details',userController.getDetails);
 userRouter.get('/viewpaper/:id',userController.getViewPaper);
 userRouter.get('/download/:id',userController.getdownload);
+userRouter.get('/about',userController.getAbout);
+userRouter.get('/contact',userController.getContact);
+userRouter.post('/contact',userController.postContact);
 
 module.exports=userRouter;

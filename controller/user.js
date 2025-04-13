@@ -1,4 +1,5 @@
 const Home = require('../models/qp');
+const Contact=require('../models/contact');
 const rootDir = require('../utils/pathutils');
 const path = require('path');
 const axios = require('axios');
@@ -39,7 +40,7 @@ exports.getdownload = async (req, res, next) => {
     let i = 0;
     for (const file of files) {
         const response = await axios.get(file.path, { responseType: 'arraybuffer' });
-       
+
         if (i !== 0) doc.addPage();
         doc.image(response.data, {
             fit: [500, 400],
@@ -49,4 +50,16 @@ exports.getdownload = async (req, res, next) => {
         i++;
     }
     doc.end();
+}
+exports.getAbout = (req, res) => {
+    res.render('about',{islogedin:req.session.isLogedin});
+}
+exports.getContact=(req,res)=>{
+    res.render('contact',{islogedin:req.session.isLogedin});
+}
+exports.postContact=async(req,res)=>{
+    const {userName,email,msg}=req.body;
+    const contact=await Contact({userName,email,msg});
+    await contact.save();
+    res.redirect('/');
 }

@@ -6,8 +6,8 @@
         <!-- Navigation Links -->
         <ul class="hidden md:flex space-x-6 text-lg">
             <li><a href="/" class="hover:text-yellow-300 transition duration-300">Home</a></li>
-            <li><a href="#" class="hover:text-yellow-300 transition duration-300">About</a></li>
-            <li><a href="#" class="hover:text-yellow-300 transition duration-300">Contact</a></li>
+            <li><a href="/about" class="hover:text-yellow-300 transition duration-300">About</a></li>
+            <li><a href="/contact" class="hover:text-yellow-300 transition duration-300">Contact-us</a></li>
         </ul>
 
         <% if (islogedin) { %>
@@ -47,8 +47,8 @@
     <!-- Mobile Menu -->
     <div class="hidden md:hidden bg-blue-600 p-4 space-y-2 text-center" id="mobile-menu">
         <a href="/" class="block hover:text-yellow-300">Home</a>
-        <a href="#" class="block hover:text-yellow-300">About</a>
-        <a href="#" class="block hover:text-yellow-300">Contact</a>
+        <a href="/about" class="block hover:text-yellow-300">About</a>
+        <a href="/contact" class="block hover:text-yellow-300">Contact-us</a>
 
         <% if (islogedin) { %>
             <a href="/home" class="block hover:text-yellow-300">Host-Room</a>
