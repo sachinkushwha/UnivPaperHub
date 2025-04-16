@@ -10,7 +10,8 @@ const multer=require('multer');
 const path=require('path');
 const rootDir=require('./utils/pathutils');
 const {storages}=require('./cloudinaryConfig');
-const mongoUri= "mongodb+srv://sachin:kumar@airbnb.48epv.mongodb.net/agc?retryWrites=true&w=majority&appName=airbnb";
+require('dotenv').config();
+// const mongoUri= "mongodb+srv://sachin:kumar@airbnb.48epv.mongodb.net/agc?retryWrites=true&w=majority&appName=airbnb";
 
 // for seo
 app.get('/sitemap.xml', (req, res) => {
@@ -50,12 +51,13 @@ app.get('/robots.txt', (req, res) => {
 
 app.use(multer({storage:storages}).array('photo',5));
 app.use(express.urlencoded());
+app.use(express.json());
 app.use('/viewpaper/uploads',express.static(path.join(rootDir,'uploads')));
 app.set('view engine','ejs');
 app.set('views','views');
 
 const storage=new mongoSessionStorage({
-    uri:mongoUri,
+    uri:process.env.MONGO_URI,
     collection:'session'
 });
 
@@ -80,8 +82,8 @@ app.use((req,res,next)=>{
     }
 })
 app.use(hostRouter);
-mongoose.connect(mongoUri).then(()=>{
-    app.listen(3000,()=>{
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+    app.listen(process.env.PORT,()=>{
         console.log('server start on http://localhost:3000');
     })
 })
