@@ -16,25 +16,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Previous Year Papers | PYQP</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+  
 </head>
 
 <body class="bg-gray-100">
+   
     <%-include('partials/nave')%>
         <div class="container  mx-auto p-6">
-            <h1 class="text-3xl font-bold text-center mb-6">Previous Year Question Papers</h1>
+            <h1 class="text-2xl font-bold text-center mb-6 text-white">Previous Year Question Papers</h1>
 
             <% semester.forEach((sem)=>{%>
-                <h2 class="text-2xl font-semibold mb-4"><%=sem%></h2>
+                <h2 class="text-2xl font-semibold mb-4 text-white"><%=sem%></h2>
                 <div class="flex flex-wrap gap-6">
                     <% qpdata.forEach((data=>{ %>
                         <% if(data.semester===sem){%>
-                        <div class="mb-6">
-                            <div class="bg-white p-4 rounded-lg shadow-md">
-                                <h2 class="text-xl font-semibold">Subject: <%=data.subject%>
+                        <div class="mb-6 ">
+                            <div class="bg-black  bg-opacity-40 p-4 rounded-lg shadow-md ">
+                                <h2 class="text-white font-semibold">Subject: <%=data.subject%>
                                 </h2>
-                                <p class="text-gray-600">PaperType: <%=data.papertype%>
+                                <p class="text-white">PaperType: <%=data.papertype%>
                                 </p>
-                                <p class="text-gray-600">Year: <%=data.year%>
+                                <p class="text-white">Year: <%=data.year%>
                                 </p>
                                 <div class="mt-2">
                                     <a href="/download/<%=data._id%>" 
