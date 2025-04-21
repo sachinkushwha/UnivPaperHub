@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta name="description" content="AGCPYQP helps you prepare for exams by practicing previous year question papers online.">
-  <meta name="keywords" content="AGCPYQP, previous year question papers, practice papers, online test">
-  <meta name="author" content="sachin kushwaha">
-  <meta name="google-site-verification" content="0AZXvz5XhCMKaRtmkmv1LppDr507uOzxnpZ946MgIUQ" />
-  <!-- og (open graph) -->
-  <meta property="og:title" content="Previous Year Question Papers | AGCPYQP" />
-  <meta property="og:description" content="Practice previous year question papers online with AGCPYQP and get exam-ready." />
-  <meta property="og:url" content="https://agcpyqp-1.onrender.com" />
-  <meta property="og:type" content="website" />
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previous Year Papers | PYQP</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-  
-</head>
-
-<body class="bg-gray-100">
+<%-include('partials/head')%>
+<body class="bg-black">
    
     <%-include('partials/nave')%>
         <div class="container  mx-auto p-6">
@@ -32,7 +11,7 @@
                     <% qpdata.forEach((data=>{ %>
                         <% if(data.semester===sem){%>
                         <div class="mb-6 ">
-                            <div class="bg-black  bg-opacity-40 p-4 rounded-lg shadow-md ">
+                            <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
                                 <h2 class="text-white font-semibold">Subject: <%=data.subject%>
                                 </h2>
                                 <p class="text-white">PaperType: <%=data.papertype%>

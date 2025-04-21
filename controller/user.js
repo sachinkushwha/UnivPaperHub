@@ -9,7 +9,7 @@ exports.getHome = async (req, res, next) => {
     const sem = pd.map((data) => data.semester);
     const semester = [...new Set(sem)];
     Home.find().then(qpdata => {
-        res.render('index', { islogedin: req.session.isLogedin, qpdata, semester });
+        res.render('index', { islogedin: req.session.isLogedin, qpdata, semester,pageTitle:'Previous Year Papers | PYQP' });
     })
 
 }
@@ -53,7 +53,7 @@ exports.getAbout = (req, res) => {
     res.render('about',{islogedin:req.session.isLogedin});
 }
 exports.getContact=(req,res)=>{
-    res.render('contact',{islogedin:req.session.isLogedin});
+    res.render('contact',{islogedin:req.session.isLogedin,pageTitle:'Contact Us | AGCPYQP'});
 }
 exports.postContact=async(req,res)=>{
     const {userName,email,msg}=req.body;
