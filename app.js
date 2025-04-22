@@ -53,6 +53,7 @@ app.use(multer({storage:storages}).array('photo',5));
 app.use(express.urlencoded());
 app.use(express.json());
 app.use('/viewpaper/uploads',express.static(path.join(rootDir,'uploads')));
+app.use(express.static(path.join(rootDir,'public')));
 app.set('view engine','ejs');
 app.set('views','views');
 
