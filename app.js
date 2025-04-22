@@ -19,23 +19,23 @@ app.get('/sitemap.xml', (req, res) => {
     res.send(`<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>https://agcpyqp-1.onrender.com/</loc>
+      <loc>https://unipapershare.onrender.com/</loc>
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/about</loc>
+      <loc>https://unipapershare.onrender.com/about</loc>
       <priority>0.8</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/login</loc>
+      <loc>https://unipapershare.onrender.com/login</loc>
       <priority>0.6</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/register</loc>
+      <loc>https://unipapershare.onrender.com/register</loc>
       <priority>0.6</priority>
     </url>
     <url>
-      <loc>https://agcpyqp-1.onrender.com/contact</loc>
+      <loc>https://unipapershare.onrender.com/contact</loc>
       <priority>0.5</priority>
     </url>
   </urlset>`);
@@ -45,7 +45,7 @@ app.get('/robots.txt', (req, res) => {
     res.type('text/plain');
     res.send(`User-agent: *
   Allow: /
-  Sitemap: https://agcpyqp-1.onrender.com/sitemap.xml`);
+  Sitemap: https://unipapershare.onrender.com/sitemap.xml`);
   });
 //for seo
 
