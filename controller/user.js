@@ -53,7 +53,7 @@ exports.getAbout = (req, res) => {
     res.render('about',{islogedin:req.session.isLogedin});
 }
 exports.getContact=(req,res)=>{
-    res.render('contact',{islogedin:req.session.isLogedin,pageTitle:'Contact Us | AGCPYQP'});
+    res.render('contact',{pageUrl:req.url,islogedin:req.session.isLogedin,pageTitle:'Contact Us | AGCPYQP'});
 }
 exports.postContact=async(req,res)=>{
     const {userName,email,msg}=req.body;
