@@ -9,7 +9,7 @@ exports.getHome = async (req, res, next) => {
     const sem = pd.map((data) => data.semester);
     const semester = [...new Set(sem)];
     Home.find().then(qpdata => {
-        res.render('index', { islogedin: req.session.isLogedin, qpdata, semester,pageTitle:'Previous Year Papers | PYQP' });
+        res.render('index', {pageUrl:req.url, islogedin: req.session.isLogedin, qpdata, semester,pageTitle:'Previous Year Papers | PYQP' });
     })
 
 }
