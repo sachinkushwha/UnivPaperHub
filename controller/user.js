@@ -23,7 +23,7 @@ exports.getViewPaper = (req, res, next) => {
 }
 exports.getdownload = async (req, res, next) => {
     const oneqp = await Home.findById(req.params.id);
-
+console.log(oneqp.subject);
     const files = oneqp.photos.map(img => {
         return {
             path: img.photo.replace(/\\/g, '/'),
@@ -31,7 +31,7 @@ exports.getdownload = async (req, res, next) => {
         }
     });
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=image.pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=${oneqp.subject}.pdf`);
 
     const doc = new PDFdocument();
     doc.pipe(res);
@@ -41,7 +41,7 @@ exports.getdownload = async (req, res, next) => {
 
         if (i !== 0) doc.addPage();
         doc.image(response.data, {
-            fit: [500, 400],
+            fit: [500, 700],
             align: 'center',
             valign: 'center'
         });
@@ -53,7 +53,7 @@ exports.getAbout = (req, res) => {
     res.render('about',{islogedin:req.session.isLogedin});
 }
 exports.getContact=(req,res)=>{
-    res.render('contact',{pageUrl:req.url,islogedin:req.session.isLogedin,pageTitle:'Contact Us | AGCPYQP'});
+    res.render('contact',{pageUrl:req.url,islogedin:req.session.isLogedin,pageTitle:'Contact Us | PYQP'});
 }
 exports.postContact=async(req,res)=>{
     const {userName,email,msg}=req.body;
