@@ -1,38 +1,60 @@
 <%-include('partials/head')%>
-<body class="bg-black">
-   
-    <%-include('partials/nave')%>
-        <div class="container  mx-auto p-6">
-            <h1 class="text-2xl font-bold text-center mb-6 text-white">Previous Year Question Papers</h1>
 
-            <% semester.forEach((sem)=>{%>
-                <h2 class="text-2xl font-semibold mb-4 text-white"><%=sem%></h2>
-                <div class="flex flex-wrap gap-6">
-                    <% qpdata.forEach((data=>{ %>
-                        <% if(data.semester===sem){%>
-                        <div class="mb-6 ">
-                            <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
-                                <h2 class="text-white font-semibold">Subject: <%=data.subject%>
-                                </h2>
-                                <p class="text-white">PaperType: <%=data.papertype%>
-                                </p>
-                                <p class="text-white">Year: <%=data.year%>
-                                </p>
-                                <div class="mt-2">
-                                    <a href="/download/<%=data._id%>" 
-                                        class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2">Download</a>
-                                    <a href="/viewpaper/<%=data._id%>" target="_blank"
-                                        class="bg-green-500 text-white px-4 py-2 rounded-lg">📷 View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <%}%>
-                        <%}))%>
-                </div>
-            <%})%>
+    <body class="bg-black">
+
+        <%-include('partials/nave')%>
+            <div class="container  mx-auto p-6">
+                <form action="/filter">
+                    <div class="mb-6 text-white">
+                        <label for="subjectFilter" class="mr-2"></label>
+                        <select id="subjectFilter" class="text-black p-2 rounded" name="filter" onchange="this.form.submit()">
+                            <option value="">select semester</option>
+                            <option value="Home">All</option>
+                            <option value="semester 1">semester 1</option>
+                            <option value="semester 2">semester 2</option>
+                            <option value="semester 3">semester 3</option>
+                            <option value="semester 4">semester 4</option>
+                            <option value="semester 5">semester 5</option>
+                            <option value="semester 6">semester 6</option>
+                            <option value="semester 7">semester 7</option>
+                            <option value="semester 8">semester 8</option>
+                        </select>
+                    </div>
+                </form>
                
-        </div>
-        <%-include('partials/footer')%>
-</body>
 
-</html>
+                <h1 class="text-2xl font-bold text-center mb-6 text-white">Previous Year Question Papers</h1>
+
+                <% semester.forEach((sem)=>{%>
+                    <h2 class="text-2xl font-semibold mb-4 text-white">
+                        <%=sem%>
+                    </h2>
+                    <div class="flex flex-wrap gap-6">
+                        <% qpdata.forEach((data=>{ %>
+                            <% if(data.semester===sem){%>
+                                <div class="mb-6 ">
+                                    <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
+                                        <h2 class="text-white font-semibold">Subject: <%=data.subject%>
+                                        </h2>
+                                        <p class="text-white">PaperType: <%=data.papertype%>
+                                        </p>
+                                        <p class="text-white">Year: <%=data.year%>
+                                        </p>
+                                        <div class="mt-2">
+                                            <a href="/download/<%=data._id%>"
+                                                class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2">Download</a>
+                                            <a href="/viewpaper/<%=data._id%>" target="_blank"
+                                                class="bg-green-500 text-white px-4 py-2 rounded-lg">📷 View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                                    <%}))%>
+                    </div>
+                    <%})%>
+
+            </div>
+            <%-include('partials/footer')%>
+    </body>
+
+    </html>

@@ -61,3 +61,14 @@ exports.postContact=async(req,res)=>{
     await contact.save();
     res.redirect('/');
 }
+
+exports.getFilter=async(req,res,next)=>{
+    let fil=req.query.filter;
+    console.log(fil);
+    if(fil==="Home"){
+       return res.redirect('/');
+    }
+    const sem=await Home.find({semester:req.query.filter});
+    console.log(sem);
+    res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:sem,semester:[req.query.filter]});
+}

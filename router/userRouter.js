@@ -7,5 +7,6 @@ userRouter.get('/download/:id',userController.getdownload);
 userRouter.get('/about',userController.getAbout);
 userRouter.get('/contact',userController.getContact);
 userRouter.post('/contact',userController.postContact);
+userRouter.get('/filter',userController.getFilter);
 
 module.exports=userRouter;
