@@ -65,33 +65,26 @@ exports.postContact=async(req,res)=>{
 exports.getFilter=async(req,res,next)=>{
     let fil=req.query.semester;
     let papertype=req.query.papertype;
-    console.log(papertype);
-    console.log(fil);
     if(fil){
        req.session.isSem=fil;
     }else{
         req.session.isSem="Home";
     }
-   console.log("first if");
     if(fil==="Home"){
        return res.redirect('/');
     }
    console.log("second if");
     if(req.session.isSem!=="Home" && papertype){
-        console.log(req.session.isSem);
         const sem=await Home.find({semester:req.session.isSem});
         const paper=sem.filter(pap=>pap.papertype===papertype);
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:paper,semester:[req.session.isSem]});
     }
-    console.log("third if");
     if(papertype){
-        console.log(papertype);
         const pape=await Home.find({papertype:papertype});
         let pa=pape.map(da=>da.semester);
         let semester=[...new Set(pa)]
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:pape,semester});
     }
-    console.log("first if");
     const sem=await Home.find({semester:fil});
     res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:sem,semester:[req.query.semester]});
 }
