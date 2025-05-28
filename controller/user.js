@@ -76,6 +76,7 @@ exports.getFilter=async(req,res,next)=>{
     }
    console.log("second if");
     if(req.session.isSem!=="Home" && papertype){
+        console.log(req.session.isSem);
         const sem=await Home.find({semester:req.session.isSem});
         const paper=sem.filter(pap=>pap.papertype===papertype);
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:paper,semester:[req.session.isSem]});
