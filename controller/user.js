@@ -69,6 +69,8 @@ exports.getFilter=async(req,res,next)=>{
     console.log(fil);
     if(fil){
        req.session.isSem=fil;
+    }else{
+        req.session.isSem="Home";
     }
    console.log("first if");
     if(fil==="Home"){
