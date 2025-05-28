@@ -66,6 +66,7 @@ exports.getFilter=async(req,res,next)=>{
     let fil=req.query.semester;
     let papertype=req.query.papertype;
     console.log(papertype);
+    console.log(fil);
     if(fil){
        req.session.isSem=fil;
     }
