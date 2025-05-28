@@ -65,6 +65,7 @@ exports.postContact=async(req,res)=>{
 exports.getFilter=async(req,res,next)=>{
     let fil=req.query.semester;
     let papertype=req.query.papertype;
+    console.log(papertype);
     if(fil){
        req.session.isSem=fil;
     }
@@ -79,6 +80,7 @@ exports.getFilter=async(req,res,next)=>{
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:paper,semester:[req.session.isSem]});
     }
     if(papertype){
+        console.log(papertype);
         const pape=await Home.find({papertype:papertype});
         let pa=pape.map(da=>da.semester);
         let semester=[...new Set(pa)]
