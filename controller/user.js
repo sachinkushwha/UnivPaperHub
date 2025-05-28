@@ -89,7 +89,7 @@ exports.getFilter=async(req,res,next)=>{
         let semester=[...new Set(pa)]
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:pape,semester});
     }
-    console.log("final if");
+    console.log("first if");
     const sem=await Home.find({semester:fil});
     res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:sem,semester:[req.query.semester]});
 }
