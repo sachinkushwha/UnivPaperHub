@@ -70,16 +70,17 @@ exports.getFilter=async(req,res,next)=>{
     if(fil){
        req.session.isSem=fil;
     }
-   
+   console.log("first if");
     if(fil==="Home"){
        return res.redirect('/');
     }
-   
+   console.log("second if");
     if(req.session.isSem!=="Home" && papertype){
         const sem=await Home.find({semester:req.session.isSem});
         const paper=sem.filter(pap=>pap.papertype===papertype);
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:paper,semester:[req.session.isSem]});
     }
+    console.log("third if");
     if(papertype){
         console.log(papertype);
         const pape=await Home.find({papertype:papertype});
@@ -87,6 +88,7 @@ exports.getFilter=async(req,res,next)=>{
         let semester=[...new Set(pa)]
         return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:pape,semester});
     }
+    console.log("final if");
     const sem=await Home.find({semester:fil});
     res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:sem,semester:[req.query.semester]});
 }
