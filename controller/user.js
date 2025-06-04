@@ -6,6 +6,7 @@ const axios = require('axios');
 const PDFdocument = require('pdfkit');
 exports.getHome = async (req, res, next) => {
     const pd = await Home.find();
+
     const sem = pd.map((data) => data.semester);
     const semester = [...new Set(sem)];
     Home.find().then(qpdata => {
@@ -64,16 +65,33 @@ exports.postContact=async(req,res)=>{
 
 exports.getFilter=async(req,res,next)=>{
     let fil=req.query.semester;
+    console.log(fil);
     let papertype=req.query.papertype;
+    let department=req.query.department;
+    console.log(department);
+    if(department){
+        req.session.isdep=department;
+    }
+    if(department==="all" || fil==="Home"){
+        return res.redirect('/');
+    }
+    
+    if(department){
+        const depData=await Home.find({department});
+        let sem=depData.map(sem=>sem.semester);
+        let semester=[...new Set(sem)]
+        return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:depData,semester})
+    }
     if(fil){
        req.session.isSem=fil;
-    }else{
-        req.session.isSem="Home";
     }
-    if(fil==="Home"){
-       return res.redirect('/');
+    console.log(req.session.isdep);
+    if(fil==="Home"&& req.session.isdep!="nodep"){
+        const depData=await Home.find({department:req.session.isdep});
+        let sem=depData.map(sem=>sem.semester);
+        let semester=[...new Set(sem)]
+        return res.render('index',{pageTitle:"Previous Year Papers | PYQP",pageUrl:req.url,islogedin:req.session.isLogedin,qpdata:depData,semester})
     }
-   console.log("second if");
     if(req.session.isSem!=="Home" && papertype){
         const sem=await Home.find({semester:req.session.isSem});
         const paper=sem.filter(pap=>pap.papertype===papertype);

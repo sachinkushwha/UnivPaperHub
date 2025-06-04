@@ -10,6 +10,7 @@ const paper=mongoose.Schema({
         public_id:String
     }],
     papertype:{type:String,required:true},
+    department:{type:String,required:true},
     user:[
         {
             type:mongoose.Schema.Types.ObjectId,

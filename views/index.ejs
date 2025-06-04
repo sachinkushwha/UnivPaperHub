@@ -4,11 +4,25 @@
 
         <%-include('partials/nave')%>
             <div class="container  mx-auto p-6">
-                <div class="flex justify-center">
-                    <form action="/filter">
+                <div class="flex justify-center gap-1">
+                    
+                    <form action="/filter" class="w-64">
                         <div class="mb-6 text-white">
-                            <label for="subjectFilter" class="mr-2"></label>
-                            <select id="subjectFilter" class="text-black p-2 rounded" name="semester"
+                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="department"
+                                onchange="this.form.submit()">
+                                <option value="">Select Department</option>
+                                <option value="all">All</option>
+                                <option value="Computer Science & Enginerring">Computer Science & Enginerring</option>
+                                <option value="Batchler of Pharmace">Batchler of Pharmace</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <form action="/filter" class="w-48">
+                        <div class="mb-6 text-white">
+                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="semester"
                                 onchange="this.form.submit()">
                                 <option value="">select semester</option>
                                 <option value="Home">All</option>
@@ -23,10 +37,10 @@
                             </select>
                         </div>
                     </form>
-                    <form action="/filter">
+                    <form action="/filter" class="w-48">
                         <div class="mb-6 text-white">
-                            <label for="subjectFilter" class="mr-2"></label>
-                            <select id="subjectFilter" class="text-black p-2 rounded" name="papertype"
+                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="papertype"
                                 onchange="this.form.submit()">
                                 <option value="">PaperType</option>
                                 <option value="Final paper">Final paper</option>
@@ -35,6 +49,7 @@
                             </select>
                         </div>
                     </form>
+                    
                 </div>
 
 
@@ -51,6 +66,8 @@
                                     <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
                                         <h2 class="text-white font-semibold">Subject: <%=data.subject%>
                                         </h2>
+                                        <h3 class="text-white font-semibold">Department: <%=data._doc.department%>
+                                        </h3>
                                         <p class="text-white">PaperType: <%=data.papertype%>
                                         </p>
                                         <p class="text-white">Year: <%=data.year%>
