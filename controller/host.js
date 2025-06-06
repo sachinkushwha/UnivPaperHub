@@ -12,14 +12,14 @@ exports.getUpload = (req, res, next) => {
     res.render('upload', { islogedin: req.session.isLogedin });
 }
 exports.postUpload = (req, res, next) => {
-    const { semester, subject, year, papertype ,department} = req.body;
+    const { semester, subject, year, papertype ,department,college} = req.body;
     const user = req.session.user._id;
     const photos = req.files.map(file => ({
         photo: file.path,
         originalname: file.originalname,
         public_id: file.filename
     }));
-    const home = new Home({ semester, subject, year, photos, papertype,department, user });
+    const home = new Home({ semester, subject, year, photos, papertype,department,college, user });
     home.save().then(() => {
         res.redirect('/home');
     });

@@ -5,27 +5,44 @@
         <%-include('partials/nave')%>
             <div class="container  mx-auto p-6">
                 <div class="flex justify-center gap-1">
-                    
+
                     <form action="/filter" class="w-64">
                         <div class="mb-6 text-white">
-                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
-                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="department"
-                                onchange="this.form.submit()">
-                                <option value="">Select Department</option>
+                            <label for="subjectFilter"
+                                class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter"
+                                class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                                name="colleges" onchange="this.form.submit()">
+                                <option value="">Select coll/univ</option>
                                 <option value="all">All</option>
+                                <option value="Amritsar group of colleges">Amritsar group of colleges</option>
+                                <option value="Punjab tachnical university">Punjab tachnical university</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <form action="/filter" class="w-64">
+                        <div class="mb-6 text-white">
+                            <label for="subjectFilter"
+                                class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter"
+                                class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                                name="department" onchange="this.form.submit()">
+                                <option value="">Select Department</option>
                                 <option value="Computer Science & Enginerring">Computer Science & Enginerring</option>
-                                <option value="Batchler of Pharmace">Batchler of Pharmace</option>
+                                <option value="Bachelor of pharmacy">Bachelor of pharmacy</option>
                             </select>
                         </div>
                     </form>
 
                     <form action="/filter" class="w-48">
                         <div class="mb-6 text-white">
-                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
-                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="semester"
-                                onchange="this.form.submit()">
+                            <label for="subjectFilter"
+                                class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter"
+                                class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                                name="semester" onchange="this.form.submit()">
                                 <option value="">select semester</option>
-                                <option value="Home">All</option>
                                 <option value="semester 1">semester 1</option>
                                 <option value="semester 2">semester 2</option>
                                 <option value="semester 3">semester 3</option>
@@ -39,9 +56,11 @@
                     </form>
                     <form action="/filter" class="w-48">
                         <div class="mb-6 text-white">
-                            <label for="subjectFilter" class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
-                            <select id="subjectFilter" class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition" name="papertype"
-                                onchange="this.form.submit()">
+                            <label for="subjectFilter"
+                                class="block mb-2 text-sm font-semibold text-gray-300 mr-2"></label>
+                            <select id="subjectFilter"
+                                class="w-full p-3 rounded-md bg-gray-800 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                                name="papertype" onchange="this.form.submit()">
                                 <option value="">PaperType</option>
                                 <option value="Final paper">Final paper</option>
                                 <option value="mst 1">mst 1</option>
@@ -49,7 +68,7 @@
                             </select>
                         </div>
                     </form>
-                    
+
                 </div>
 
 
@@ -63,6 +82,26 @@
                         <% qpdata.forEach((data=>{ %>
                             <% if(data.semester===sem){%>
                                 <div class="mb-6 ">
+                                    <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
+                                        <h1 class="text-white font-semibold text-[20px]">Coll/univ: <%=data._doc.college%></h1>
+                                        <h2 class="text-white font-semibold">Subject: <%=data.subject%>
+                                        </h2>
+                                        <h3 class="text-white font-semibold">Department: <%=data._doc.department%>
+                                        </h3>
+                                        <p class="text-white">PaperType: <%=data.papertype%>
+                                        </p>
+                                        <p class="text-white">Year: <%=data.year%>
+                                        </p>
+                                        <div class="mt-2">
+                                            <a href="/download/<%=data._id%>"
+                                                class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2">Download</a>
+                                            <a href="/viewpaper/<%=data._id%>" target="_blank"
+                                                class="bg-green-500 text-white px-4 py-2 rounded-lg">📷 View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}else if(data.department===sem){%>
+                                    <div class="mb-6 ">
                                     <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
                                         <h2 class="text-white font-semibold">Subject: <%=data.subject%>
                                         </h2>
@@ -80,7 +119,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <%}%>
+                               
+                                <%}else if(data._doc.college===sem){%>
+                                    <div class="mb-6 ">
+                                    <div class="bg-gray-700 bg-opacity-40 p-4 rounded-lg shadow-md ">
+                                        <h2 class="text-white font-semibold">Subject: <%=data.subject%>
+                                        </h2>
+                                        <h3 class="text-white font-semibold">Department: <%=data._doc.department%>
+                                        </h3>
+                                        <p class="text-white">PaperType: <%=data.papertype%>
+                                        </p>
+                                        <p class="text-white">Year: <%=data.year%>
+                                        </p>
+                                        <div class="mt-2">
+                                            <a href="/download/<%=data._id%>"
+                                                class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2">Download</a>
+                                            <a href="/viewpaper/<%=data._id%>" target="_blank"
+                                                class="bg-green-500 text-white px-4 py-2 rounded-lg">📷 View</a>
+                                        </div>
+                                    </div>
+                                </div>
+                               <%}%>
                                     <%}))%>
                     </div>
                     <%})%>
